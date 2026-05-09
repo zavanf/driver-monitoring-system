@@ -1,8 +1,7 @@
-# driver-monitoring-system
-A computer vision-based driver monitoring system designed to detect fatigue and distracted driving behaviors using a Raspberry Pi 5 and a Raspberry Pi AI Camera.
-
 # Driver Monitoring System
-A computer vision-based driver monitoring system designed to detect fatigue and distracted driving behaviors using a Raspberry Pi 5 and a Raspberry Pi AI camera.
+A computer vision-based driver monitoring system designed to detect fatigue and distracted driving behaviors using a Raspberry Pi 5 and a Raspberry Pi AI camera. 
+
+This project logs GPS coordinates, timestamps, and safety-related events locally for prototype testing. No real driver footage or location logs are included in this repository.
 
 ## Technologies
 - Python
