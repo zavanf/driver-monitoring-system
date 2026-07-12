@@ -1,52 +1,96 @@
 # Driver Monitoring System
-A computer vision-based driver monitoring system designed to detect fatigue and distracted driving behaviors using a Raspberry Pi 5 and a Raspberry Pi AI camera. 
 
-This project logs GPS coordinates, timestamps, and safety-related events locally for prototype testing. No real driver footage or location logs are included in this repository.
+A Raspberry Pi–based prototype for reviewing driver-safety events produced by a computer-vision monitoring workflow. The application organizes event metadata, GPS coordinates, thumbnails, and video clips in a local Flask dashboard.
 
-## Technologies
-- Python
-- Raspberry Pi 5
-- Raspberry Pi AI Camera
-- Computer Vision
-- HTML/CSS/JavaScript
-- Flask Web Interface
+> [!IMPORTANT]
+> This repository is a local prototype and portfolio demonstration. It is not production-ready, does not include authentication, and should not be exposed directly to the public internet.
 
-## Overview
-This project implements a driver safety monitoring system that analyzes facial landmarks and eye movement to detect signs of driver fatigue or distraction.
+## Highlights
 
-Using computer vision techniques, the system monitors indicators such as eye closure and facial positioning. When unsafe behavior is detected, the system records timestamps, GPS coordinates, and safety-related events for later review.
+- Reviews fatigue and distraction events in a browser
+- Associates events with timestamps and GPS coordinates
+- Displays captured thumbnails and video clips
+- Supports HTTP range requests for responsive video playback
+- Converts recordings to browser-friendly H.264 with FFmpeg
+- Filters, downloads, and deletes locally stored events
+- Keeps real driver footage and location logs out of source control
 
-## Hardware
-- Raspberry Pi 5
-- Raspberry Pi AI Camera
-- GPS Module (Adafruit GPS HAT)
+## Technology
 
-## Features
-- Detects potential driver fatigue
-- Monitors facial landmarks and eye movement
-- Detects distracted driving behaviors
-- Records safety-related events with timestamps
-- Stores GPS coordinates for detected events
-- Saves event thumbnails and video clips
-- Web dashboard for reviewing driver events
-- Video playback and download support
-- Automatic event logging and management
-- Demonstrates integration between embedded hardware and computer vision software
+| Area | Tools |
+| --- | --- |
+| Backend | Python, Flask, Flask-CORS |
+| Media | FFmpeg, MP4/WebM/OGG |
+| Hardware target | Raspberry Pi 5, Raspberry Pi AI Camera, GPS module |
+| Data | CSV event logs and local media files |
+| Interface | HTML, CSS, JavaScript |
 
-## Web Dashboard
-The system includes a responsive browser-based dashboard for reviewing recorded driver monitoring events.
+## Architecture
 
-## Dashboard Features
-- Event log viewer with timestamps and descriptions
-- Video preview and playback support
-- Thumbnail previews for recorded events
-- GPS location links using Google Maps
-- Event filtering and management
-- Video conversion support using FFmpeg
-- Download and delete functionality
-- Auto-refreshing event updates
+```text
+Camera / detection pipeline
+          |
+          v
+driver_monitoring_logs/
+  events_log.csv
+  images/
+  videos/
+          |
+          v
+Flask review API + dashboard
+          |
+          v
+Browser-based event review
+```
 
-## Purpose
-The goal of this project is to demonstrate how embedded systems and computer vision can improve driver safety through automated monitoring, fatigue detection, and event-based recording.
+The repository contains the review application. Camera capture and model-training assets are outside this repository.
 
-This project also demonstrates practical integration between AI-powered vision systems, embedded hardware, GPS tracking, and a custom-built web interface for real-time event review and analysis.
+## Getting Started
+
+### Prerequisites
+
+- Python 3.10 or newer
+- FFmpeg (optional, required only for video conversion)
+
+### Installation
+
+```bash
+git clone https://github.com/zavanf/driver-monitoring-system.git
+cd driver-monitoring-system
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+On Windows, activate the environment with `.venv\Scripts\activate`.
+
+### Run locally
+
+```bash
+python web_reviewer.py
+```
+
+Open [http://127.0.0.1:5000](http://127.0.0.1:5000). When no event log is present, the API returns placeholder sample events.
+
+## Expected Data Layout
+
+```text
+driver_monitoring_logs/
+├── events_log.csv
+├── images/
+└── videos/
+    └── converted/
+```
+
+The event log is expected to contain fields used by the viewer, including `timestamp`, `event_type`, `duration_seconds`, and `filename`. GPS fields may be included for map links.
+
+## Privacy and Security
+
+- Do not commit real driver footage, images, GPS coordinates, or event logs.
+- The server binds to localhost by default.
+- CORS is enabled for local development.
+- Add authentication, authorization, validation, encrypted storage, and restricted CORS before any network deployment.
+
+## Project Status
+
+Portfolio prototype. The event review workflow is implemented; production hardening, automated tests, and integration with a complete capture/detection pipeline remain future work.
