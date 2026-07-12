@@ -11,7 +11,7 @@ A Raspberry Pi 5 and computer-vision prototype developed during a Telematics GPS
 | --- | --- |
 | Organization | Telematics GPS, LLC |
 | Engagement | Cybersecurity and Software Engineering Internship / George Mason University capstone |
-| Role | Team Lead within a 6-person multidisciplinary team |
+| Role | Team Lead |
 | Timeline | August 2025 - April 2026 |
 | Objective | Research, prototype, and evaluate a driver-safety monitoring capability for a fleet and telematics environment |
 | Hardware | Raspberry Pi 5, Raspberry Pi AI Camera, and GPS integration |
