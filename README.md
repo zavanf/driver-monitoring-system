@@ -5,6 +5,23 @@ A Raspberry Pi 5 and computer-vision prototype developed during a Telematics GPS
 > [!IMPORTANT]
 > This repository represents the working driver-monitoring prototype and its local event-review interface. It does not claim that a commercial AI dashcam was deployed. The dashcam was a researched future implementation path evaluated alongside migration to a newer GPS tracking platform.
 
+## Prototype Photos
+
+### Driver-behavior detection demo
+
+<p align="center">
+  <img src="docs/images/detection-demo.jpg" alt="Driver Monitor prototype displaying eye-state tracking and a looking-left warning during a demonstration" width="560">
+</p>
+
+The detection interface displays eye state, facial landmarks, and a looking-left warning during a prototype demonstration.
+
+### In-vehicle setup and hardware
+
+| In-vehicle prototype setup | Hardware prototype |
+| --- | --- |
+| <img src="docs/images/vehicle-setup.jpg" alt="Camera, connected prototype hardware, and laptop arranged inside a vehicle" width="360"> | <img src="docs/images/hardware-prototype.jpg" alt="Raspberry Pi prototype with an attached GPS board and connected cables" width="360"> |
+| Camera and connected hardware positioned inside a vehicle for prototype testing. | Raspberry Pi and GPS hardware used in the prototype. |
+
 ## Professional Context
 
 | Project detail | Scope |
